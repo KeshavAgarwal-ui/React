@@ -11,38 +11,38 @@
     <script src="https://unpkg.com/supersimpledev@8.6.4/dayjs.js"></script>
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
-      const button = <button>Good Job!</button>;
-      const para = <p>My Name is Keshav Agarwala</p>;
-      const design = (
-        <div>
-            <p>Cotton socks</p>    
-            <p>Price: $10</p>
-            <button>Add to Cart</button>
-        </div>
-      );
-      let priceOfSocks = 10;
-      let priceOfTshirts = 8;
-      let productCost = priceOfSocks + (priceOfTshirts*2);
-      let shippingCost = 5;
-      let totalCost = productCost + shippingCost;
-      const design2 = (
-        <div>
-            <p>Product Cost: ${productCost}</p>
-            <p>Shipping Cost: ${shippingCost}</p>
-            <p>Total Cost: ${totalCost}</p>
-            <button>Place your order</button>
-        </div>
-       ); 
-       let currDate = dayjs().format('MMMM D');
-       console.log(currDate);
-       let datePara = <p>Today is {currDate}</p>;
-      const container = document.querySelector('.js-container');
-      const root = ReactDOM.createRoot(container);
-      setInterval(()=>{
-        let currTime = dayjs().format('HH:mm:ss');
-        let timePara = <p>Current Time: {currTime}</p>;
-        root.render(timePara);
-    },1000);
+        const button = <button>Good Job!</button>;
+        const para = <p>My Name is Keshav Agarwala</p>;
+        const design = (
+            <div>
+                <p>Cotton socks</p>    
+                <p>Price: $10</p>
+                <button>Add to Cart</button>
+            </div>
+        );
+        let priceOfSocks = 10;
+        let priceOfTshirts = 8;
+        let productCost = priceOfSocks + (priceOfTshirts*2);
+        let shippingCost = 5;
+        let totalCost = productCost + shippingCost;
+        const design2 = (
+            <div>
+                <p>Product Cost: ${productCost}</p>
+                <p>Shipping Cost: ${shippingCost}</p>
+                <p>Total Cost: ${totalCost}</p>
+                <button>Place your order</button>
+            </div>
+        ); 
+        let currDate = dayjs().format('MMMM D');
+        console.log(currDate);
+        let datePara = <p>Today is {currDate}</p>;
+        const container = document.querySelector('.js-container');
+        const root = ReactDOM.createRoot(container);
+        setInterval(()=>{
+            let currTime = dayjs().format('HH:mm:ss');
+            let timePara = <p>Current Time: {currTime}</p>;
+            root.render(timePara);
+        },1000);
     </script>
   </body>
 </html>
