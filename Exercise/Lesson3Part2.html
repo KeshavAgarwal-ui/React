@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chatbot</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+        function InputText({text,setText}){
+            function updateText(event){
+                setText(event.target.value);
+            }
+            return(
+                <input type="text" placeholder="Type a name here" onChange={updateText} value={text}/>
+            );
+        }
+        function App(){
+            const [ text, setText ] = React.useState('');
+
+            function exampleBtn(){
+                setText('Keshav');
+            }
+
+            function resetBtn(){
+                setText('');
+            }
+            return (
+                <>
+                    <InputText
+                        text={text}
+                        setText={setText}
+                    />
+                    <button onClick={resetBtn}>Reset</button>
+                    <button onClick={exampleBtn}>Example</button>
+                    <p>Hello {text}</p>
+                </>
+            );
+        }
+
+        const container = document.querySelector('.js-container');
+        ReactDOM.createRoot(container).render(<App />)
+    </script>
+  </body>
+</html>
