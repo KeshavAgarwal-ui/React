@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .heading{
+            font-size: 25px;
+        }
+        .input-field {
+            width: 35%;
+            padding: 10px;
+            padding-left: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .btns{
+            margin-right: 6px;
+            margin-top: 11px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(0,123,255);
+            color: white;
+            cursor: pointer;
+        }
+
+        .hide-show-btn{
+            margin-left: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="js-container">
+
+    </div>
+    
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+        function LoginForm(){
+            const [ showPassword, setShowPassword ] = React.useState(false);
+
+            function changeShowPassword(){
+                if(showPassword==false){
+                    setShowPassword(true);
+                }
+                else{
+                    setShowPassword(false);
+                }
+            }
+
+            const showButtonText = showPassword==true ? "hide" : "show";
+
+            return (
+                <div>
+                    <p className="heading">Hello, welcome to my website</p>
+                    <div>
+                        <input type="email" placeholder="Email" className="input-field"/>
+                    </div>
+                    <div>
+                        <input type={showPassword==true ? "text" : "password"} placeholder="Password" className="input-field password-field"/>
+                        <button className="btns hide-show-btn" onClick={changeShowPassword}>{showButtonText}</button>
+                    </div>
+                    <button className="btns">Login</button>
+                    <button className="btns">Sign Up</button>
+                </div>
+            );
+        }
+
+        function App(){
+            
+
+            return(
+                <>
+                    <LoginForm />
+                </>
+            );
+        }
+
+        const container = document.querySelector('.js-container');
+        ReactDOM.createRoot(container).render(<App />);
+    </script>
+
+</body>
+</html>

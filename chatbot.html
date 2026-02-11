@@ -88,6 +88,18 @@
         height: 35px;
         flex-shrink: 0;
       }
+
+      .empty-chat-messages-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: gray;
+      }
+
+      .loading-spinner {
+        height: 40px;
+        /* margin: -15px; */
+      }
     </style>
   </head>
   <body>
@@ -134,7 +146,7 @@
             setChatMessage([
               ...newChatMessages,
               {
-                message: "Loading...",
+                message: <img src="images/loading-spinner.gif" alt="loading-spinner" className="loading-spinner" />,
                 sender: "robot",
                 id:crypto.randomUUID()
               }
@@ -217,7 +229,15 @@
           }
         }, [chatMessages]);
 
-        return (
+        if(chatMessages.length==0){
+          return(
+            <div className="chat-messages-container empty-chat-messages-container" ref={chatMessagesRef}>
+            <p className="welcome-message">Welcome to my ChatBot Project! Send a message using textbox below.</p>
+            </div>
+          );
+        }
+        else{
+          return (
           <div className="chat-messages-container" ref={chatMessagesRef}>
             {chatMessages.map((chatMessage)=>{
               return (
@@ -230,26 +250,13 @@
             })}
           </div>
         );
+        }
+
+        
       }
 
       function App() {
-        const [chatMessages, setChatMessage] = React.useState([{
-          message: "hello chatbot",
-          sender: "user",
-          id: "id1"
-        },{
-          message: "Hello! How can I help you?",
-          sender: "robot",
-          id: "id2"
-        },{
-          message: "can your get me todays date?",
-          sender: "user",
-          id: "id3"
-        },{
-          message: "Today is Feburary 9",
-          sender: "robot",
-          id: "id4"
-        }]);
+        const [chatMessages, setChatMessage] = React.useState([]);
         // const [chatMessages, setChatMessage] = array;
         // const chatMessages = array[0];
         // const setChatMessage = array[1];
