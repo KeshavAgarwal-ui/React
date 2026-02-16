@@ -112,6 +112,17 @@
 
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
+      function useAutoScroll(dependenices){
+      const chatMessagesRef = React.useRef(null);
+        React.useEffect(()=>{
+        const containerElement =chatMessagesRef.current;
+        if(containerElement){
+          containerElement.scrollTop = containerElement.scrollHeight;
+        }
+      }, [dependenices]);
+      return chatMessagesRef;
+      }
+
       function ChatInput({ chatMessages, setChatMessage }){
         const [inputText,setInputText] = React.useState("");
         const [isLoading,setIsLoading] = React.useState(false);
@@ -220,14 +231,7 @@
       }
 
       function ChatMessages({ chatMessages }){        
-        const chatMessagesRef = React.useRef(null);
-
-        React.useEffect(()=>{
-          const containerElement =chatMessagesRef.current;
-          if(containerElement){
-            containerElement.scrollTop = containerElement.scrollHeight;
-          }
-        }, [chatMessages]);
+        const chatMessagesRef = useAutoScroll(chatMessages);
 
         if(chatMessages.length==0){
           return(
